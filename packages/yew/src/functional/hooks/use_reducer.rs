@@ -4,6 +4,8 @@ use std::marker::PhantomData;
 use std::ops::Deref;
 use std::rc::Rc;
 
+use implicit_clone::ImplicitClone;
+
 use crate::functional::{hook, Hook, HookContext};
 use crate::html::IntoPropValue;
 use crate::Callback;
@@ -41,6 +43,11 @@ impl<T> UseReducerHandle<T>
 where
     T: Reducible,
 {
+    /// Returns the inner value of the handle in an `Rc`.
+    pub fn get(&self) -> Rc<T> {
+        self.value.clone()
+    }
+
     /// Dispatch the given action to the reducer.
     pub fn dispatch(&self, value: T::Action) {
         (self.dispatch)(value)
@@ -51,6 +58,18 @@ where
         UseReducerDispatcher {
             dispatch: self.dispatch.clone(),
         }
+    }
+
+    /// Destrctures the handle into its 2 parts:
+    /// 0: the current data associated with the reducer;
+    /// 1: the dispatcher responsible for applying an action to the value.
+    pub fn into_inner(self) -> (Rc<T>, UseReducerDispatcher<T>) {
+        (
+            self.value,
+            UseReducerDispatcher {
+                dispatch: self.dispatch,
+            },
+        )
     }
 }
 
@@ -97,6 +116,8 @@ where
     }
 }
 
+impl<T> ImplicitClone for UseReducerHandle<T> where T: Reducible {}
+
 /// Dispatcher handle for [`use_reducer`] and [`use_reducer_eq`] hook
 pub struct UseReducerDispatcher<T>
 where
@@ -137,6 +158,8 @@ where
         Rc::ptr_eq(&self.dispatch, &rhs.dispatch)
     }
 }
+
+impl<T> ImplicitClone for UseReducerDispatcher<T> where T: Reducible {}
 
 impl<T> From<UseReducerDispatcher<T>> for Callback<<T as Reducible>::Action>
 where
@@ -299,7 +322,7 @@ where
 ///     }
 /// }
 ///
-/// #[function_component(UseReducer)]
+/// #[component(UseReducer)]
 /// fn reducer() -> Html {
 ///     // The use_reducer hook takes an initialization function which will be called only once.
 ///     let counter = use_reducer(CounterState::default);
