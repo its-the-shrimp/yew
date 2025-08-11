@@ -24,14 +24,14 @@ The recommended way to use suspense is with hooks.
 ```rust ,ignore
 use yew::prelude::*;
 
-#[function_component(Content)]
+#[component(Content)]
 fn content() -> HtmlResult {
     let user = use_user()?;
 
     Ok(html! {<div>{"Hello, "}{&user.name}</div>})
 }
 
-#[function_component(App)]
+#[component(App)]
 fn app() -> Html {
     let fallback = html! {<div>{"Loading..."}</div>};
 
@@ -78,6 +78,23 @@ fn use_user() -> SuspensionResult<User> {
 }
 ```
 
+#### Note on implementing suspending hooks
+
+[`Suspension::new`](https://docs.rs/yew/latest/yew/suspense/struct.Suspension.html#method.new) returns 2 values: the suspension context itself, and a suspension handle.
+The latter is the one responsible for signaling when to re-render the suspended components, it provides 2 interchangeable ways to do so:
+
+1. Calling its [`resume`](https://docs.rs/yew/latest/yew/suspense/struct.SuspensionHandle.html#method.resume) method.
+2. Dropping the handle.
+
+:::danger
+
+The suspension handle must be stored until it's time to update components, i.e. with newly received data;
+otherwise, the suspended components will enter an infinite re-render loop, thus hampering performance.
+In the example above, the suspension handle is preserved by being moved into a closure and passed into `on_load_user_complete`.
+When the hypothetical user will be loaded, the closure will be called, thus calling `handle.resume()` and re-rendering the components associated with the suspension context.
+
+:::
+
 # Complete Example
 
 ```rust
@@ -114,14 +131,14 @@ fn use_user() -> SuspensionResult<User> {
     }
 }
 
-#[function_component(Content)]
+#[component(Content)]
 fn content() -> HtmlResult {
     let user = use_user()?;
 
     Ok(html! {<div>{"Hello, "}{&user.name}</div>})
 }
 
-#[function_component(App)]
+#[component(App)]
 fn app() -> Html {
     let fallback = html! {<div>{"Loading..."}</div>};
 
@@ -144,4 +161,4 @@ demonstrates how to use.
 
 ## Relevant examples
 
--   [Suspense](https://github.com/yewstack/yew/tree/master/examples/suspense)
+- [Suspense](https://github.com/yewstack/yew/tree/master/examples/suspense)

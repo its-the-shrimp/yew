@@ -1,5 +1,124 @@
 # Changelog
 
+## ✨ yew **0.22.0** *(2024-10-14)*
+
+#### Changelog
+
+## 🛠 Fixes
+
+ - Fix: Hydratation of empty lists next to components.. [[@WorldSEnder](https://github.com/WorldSEnder), [#3630](https://github.com/yewstack/yew/pull/3630)]
+silenced non-normalised element name warnings for SVG elements [@Tim Kurdov](https://github.com/its-the-shrimp), [#3769](https://github.com/yewstack/yew/pull/3769)]
+
+## ⚡️ Features
+
+ - Raise MSRV to 1.76. [[@Elina](https://github.com/ranile), [#3693](https://github.com/yewstack/yew/pull/3693)]
+ - Add `inert` to the boolean attributes list. [[@Tomoaki Kawada](https://github.com/kawadakk), [#3678](https://github.com/yewstack/yew/pull/3678)]
+ - Namespace support for `VRaw`.. [[@Finn Bear](https://github.com/finnbear), [#3640](https://github.com/yewstack/yew/pull/3640)]
+ - Add generic type hints to boxed hooks. [[@Michael Meyer](https://github.com/Ichmed), [#3633](https://github.com/yewstack/yew/pull/3633)]
+ - add the methods and From impls. [[@Tim Kurdov](https://github.com/its-the-shrimp), [#3519](https://github.com/yewstack/yew/pull/3519)]
+ - Add IntoPropValue impl for converting to VList. [[@Muhammad Hamza](https://github.com/ranile), [#3444](https://github.com/yewstack/yew/pull/3444)]
+ - Add CallbackRef that takes ref in argument instead of value. [[@Cecile Tonglet](https://github.com/cecton), [#3419](https://github.com/yewstack/yew/pull/3419)]
+ - Remove the dependency on `boolinator`. [[@Tim Kurdov](https://github.com/its-the-shrimp), [#3420](https://github.com/yewstack/yew/pull/3420)]
+ - Allow import of layout_test into 3rd party crates. [[@rollo-b2c2](https://github.com/rollo-b2c2), [#3463](https://github.com/yewstack/yew/pull/3463)]
+ - Add WASI support for server-side rendering. [[@langyo](https://github.com/langyo), [#3534](https://github.com/yewstack/yew/pull/3534)]
+
+## 🚨 Breaking changes
+
+ - Add use_ref. [[@Alex Parrill](https://github.com/ColonelThirtyTwo), [#3548](https://github.com/yewstack/yew/pull/3548)]
+ - Allow setting JsValue as properties. [[@Elina](https://github.com/ranile), [#3458](https://github.com/yewstack/yew/pull/3458)]
+ - Remove deprecated `class=(...)` syntax. [[@Tim Kurdov](https://github.com/its-the-shrimp), [#3497](https://github.com/yewstack/yew/pull/3497)]
+ - Remove ToHtml trait. [[@Elina](https://github.com/ranile), [#3453](https://github.com/yewstack/yew/pull/3453)]
+ - Make Html (VNode) cheap to clone. [[@Cecile Tonglet](https://github.com/cecton), [#3431](https://github.com/yewstack/yew/pull/3431)]
+
+## ✨ yew-router **0.19.0** *(2024-10-14)*
+
+#### Changelog
+
+## 🛠 Fixes
+
+ - Fix CI. [[@Tomoaki Kawada](https://github.com/kawadakk), [#3679](https://github.com/yewstack/yew/pull/3679)]
+
+## ⚡️ Features
+
+ - Raise MSRV to 1.76. [[@Elina](https://github.com/ranile), [#3693](https://github.com/yewstack/yew/pull/3693)]
+
+## ✨ yew-agent **0.4.0** *(2024-10-14)*
+
+#### Changelog
+
+## ⚡️ Features
+
+ - Raise MSRV to 1.76. [[@Elina](https://github.com/ranile), [#3693](https://github.com/yewstack/yew/pull/3693)]
+ - Agent: Avoiding clone of WorkerBridge and WorkerProviderState. [[@Shihpin Tseng](https://github.com/deftsp), [#3435](https://github.com/yewstack/yew/pull/3435)]
+
+----
+
+## ✨ yew **0.21.0** *(2023-09-23)*
+
+#### Changelog
+
+## 🛠 Fixes
+
+ - Fix rust-analyzer non_camel_case_types warning. [[@Sean Bruton](https://github.com/Sean Bruton), [#3388](https://github.com/yewstack/yew/pull/3388)]
+ - Fix incorrect text escaping during SSR. [[@Tim Kurdov](https://github.com/Tim Kurdov), [#3381](https://github.com/yewstack/yew/pull/3381)]
+ - Fix top-level reconciliation in portals. [[@WorldSEnder](https://github.com/WorldSEnder), [#3020](https://github.com/yewstack/yew/pull/3020)]
+ - Fix clippy::let_unit_value lint in propless components. [[@WorldSEnder](https://github.com/WorldSEnder), [#2970](https://github.com/yewstack/yew/pull/2970)]
+
+## ⚡️ Features
+
+ - Updated the docs of `set_event_bubbling`. [[@Tim Kurdov](https://github.com/Tim Kurdov), [#3391](https://github.com/yewstack/yew/pull/3391)]
+ - feat: support arrays for Classes/classes!(). [[@Pouriya](https://github.com/Pouriya), [#3393](https://github.com/yewstack/yew/pull/3393)]
+ - Mark VNode as #[must_use]. [[@Kaede Hoshikawa](https://github.com/Kaede Hoshikawa), [#3387](https://github.com/yewstack/yew/pull/3387)]
+ - Add `IntoPropValue` implementation to convert from `Cow`s to `AttrValue`. [[@Tim Kurdov](https://github.com/Tim Kurdov), [#3346](https://github.com/yewstack/yew/pull/3346)]
+ - Remove compatibility code before 1.64. [[@Kaede Hoshikawa](https://github.com/Kaede Hoshikawa), [#3379](https://github.com/yewstack/yew/pull/3379)]
+ - Keep checked attribute for elements without special handling. [[@Muhammad Hamza](https://github.com/Muhammad Hamza), [#3373](https://github.com/yewstack/yew/pull/3373)]
+ - feat: implement hydration for vraw. [[@Dillen Meijboom](https://github.com/Dillen Meijboom), [#3245](https://github.com/yewstack/yew/pull/3245)]
+ - Add webkitdirectory to the boolean attributes list. [[@Julius Lungys](https://github.com/Julius Lungys), [#3214](https://github.com/yewstack/yew/pull/3214)]
+ - Incremental performance improvements to element creation. [[@Greg Johnston](https://github.com/Greg Johnston), [#3169](https://github.com/yewstack/yew/pull/3169)]
+ - Make VList's children Rc'ed. [[@Kaede Hoshikawa](https://github.com/Kaede Hoshikawa), [#3050](https://github.com/yewstack/yew/pull/3050)]
+ - Update dependencies. [[@Muhammad Hamza](https://github.com/Muhammad Hamza), [#3171](https://github.com/yewstack/yew/pull/3171)]
+ - Pass string types to Html props. [[@Cecile Tonglet](https://github.com/Cecile Tonglet), [#2872](https://github.com/yewstack/yew/pull/2872)]
+ - Implement an internal DomSlot for positioning instead of NodeRef. [[@WorldSEnder](https://github.com/WorldSEnder), [#3048](https://github.com/yewstack/yew/pull/3048)]
+ - Prefer pop_first if it is available. [[@Kaede Hoshikawa](https://github.com/Kaede Hoshikawa), [#3084](https://github.com/yewstack/yew/pull/3084)]
+ - Add method map() on Children to wrap easily. [[@Cecile Tonglet](https://github.com/Cecile Tonglet), [#3039](https://github.com/yewstack/yew/pull/3039)]
+ - Reentrant event listeners. [[@WorldSEnder](https://github.com/WorldSEnder), [#3037](https://github.com/yewstack/yew/pull/3037)]
+ - Add impl IntoIterator on &Classes. [[@Cecile Tonglet](https://github.com/Cecile Tonglet), [#3038](https://github.com/yewstack/yew/pull/3038)]
+ - Assert there are no circular references. [[@WorldSEnder](https://github.com/WorldSEnder), [#3025](https://github.com/yewstack/yew/pull/3025)]
+## 🚨 Breaking changes
+
+ - Remove special handling of struct fields of type `Option` in `derive(Properties)`. [[@Tim Kurdov](https://github.com/Tim Kurdov), [#3398](https://github.com/yewstack/yew/pull/3398)]
+ - Agent v2. [[@Kaede Hoshikawa](https://github.com/Kaede Hoshikawa), [#2773](https://github.com/yewstack/yew/pull/2773)]
+ - Update signature of use_prepared_state/use_transitive_state. [[@Muhammad Hamza](https://github.com/Muhammad Hamza), [#3376](https://github.com/yewstack/yew/pull/3376)]
+ - Make signature of use_future_with consistent. [[@Muhammad Hamza](https://github.com/Muhammad Hamza), [#3372](https://github.com/yewstack/yew/pull/3372)]
+ - Allow any type to be used as Children (take 2). [[@Kaede Hoshikawa](https://github.com/Kaede Hoshikawa), [#3289](https://github.com/yewstack/yew/pull/3289)]
+ - Enable PartialEq for all virtual dom types. [[@Kaede Hoshikawa](https://github.com/Kaede Hoshikawa), [#3206](https://github.com/yewstack/yew/pull/3206)]
+ - Pass hook dependencies as the first function argument. [[@Arniu Tseng](https://github.com/Arniu Tseng), [#2861](https://github.com/yewstack/yew/pull/2861)]
+ - Make Classes cheap to clone. [[@Cecile Tonglet](https://github.com/Cecile Tonglet), [#3021](https://github.com/yewstack/yew/pull/3021)]
+
+## ✨ yew-router **0.18.0** *(2023-09-xx)*
+
+#### Changelog
+
+## ⚡️ Features
+
+- Update dependencies. [[@Muhammad Hamza](https://github.com/Muhammad Hamza), [#3171](https://github.com/yewstack/yew/pull/3171)]
+- Only handle "normal" clicks on <Link>s. [[@Kai Salmon](https://github.com/Kai Salmon), [#3056](https://github.com/yewstack/yew/pull/3056)]
+
+## 🚨 Breaking changes
+
+- Encode Path Parameters in `yew-router`. [[@Jedd Dryden](https://github.com/Jedd Dryden), [#3187](https://github.com/yewstack/yew/pull/3187)]
+- Pass hook dependencies as the first function argument. [[@Arniu Tseng](https://github.com/Arniu Tseng), [#2861](https://github.com/yewstack/yew/pull/2861)]
+
+## ✨ yew-agent **0.3.0** *(2023-09-xx)*
+
+#### Changelog
+
+## 🚨 Breaking changes
+
+- Agent v2. [[@Kaede Hoshikawa](https://github.com/Kaede Hoshikawa), [#2773](https://github.com/yewstack/yew/pull/2773)]
+
+----
+
 ## ✨ yew **0.20.0** *(2022-11-xx)*
 
 #### Changelog
@@ -144,7 +263,7 @@
   - Fix clippy lints from 1.54.0. [[@Xavientois](https://github.com/Xavientois), [#1976](https://github.com/yewstack/yew/pull/1976)]
   - Fix scheduler main queue delay (#1953). [[@intendednull](https://github.com/intendednull), [#1954](https://github.com/yewstack/yew/pull/1954)]
   - Fix case warning on derived properties. [[@nitnelave](https://github.com/nitnelave), [#1929](https://github.com/yewstack/yew/pull/1929)]
-  - yew-macro: fix inability to set the autoplay atribute. [[@bakape](https://github.com/bakape), [#1866](https://github.com/yewstack/yew/pull/1866)]
+  - yew-macro: fix inability to set the autoplay attribute. [[@bakape](https://github.com/bakape), [#1866](https://github.com/yewstack/yew/pull/1866)]
   - Fix duplicate `with props` error messages.. [[@teymour-aldridge](https://github.com/teymour-aldridge), [#1730](https://github.com/yewstack/yew/pull/1730)]
   - Remove extra braces in html_nested macro. [[@Madoshakalaka](https://github.com/Madoshakalaka), [#2169](https://github.com/yewstack/yew/pull/2169)]
   - Remove unused punct field from props. [[@Xavientois](https://github.com/Xavientois), [#1969](https://github.com/yewstack/yew/pull/1969)]

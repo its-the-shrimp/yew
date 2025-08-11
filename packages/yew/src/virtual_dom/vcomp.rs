@@ -183,6 +183,8 @@ pub struct VChild<COMP: BaseComponent> {
     key: Option<Key>,
 }
 
+impl<COMP: BaseComponent> implicit_clone::ImplicitClone for VChild<COMP> {}
+
 impl<COMP: BaseComponent> Clone for VChild<COMP> {
     fn clone(&self) -> Self {
         VChild {
@@ -288,12 +290,12 @@ mod ssr_tests {
             name: String,
         }
 
-        #[function_component]
+        #[component]
         fn Child(props: &ChildProps) -> Html {
             html! { <div>{"Hello, "}{&props.name}{"!"}</div> }
         }
 
-        #[function_component]
+        #[component]
         fn Comp() -> Html {
             html! {
                 <div>
